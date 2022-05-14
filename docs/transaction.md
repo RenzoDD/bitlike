@@ -110,7 +110,7 @@ This input contains a set of signatures in a `signatures` property, and each tim
 The following methods are used to manage signatures for a transaction:
 
 - `getSignatures`: takes an array of `PrivateKey` or strings from which a `PrivateKey` can be instantiated; the transaction to be signed; the kind of [signature hash to use](https://bitcoin.org/en/developer-guide#signature-hash-types). Returns an array of objects with the following properties:
-  - `signature`: an instance of [Signature](https://github.com/RenzoDD/digibyte-js/blob/develop/lib/crypto/signature.js)
+  - `signature`: an instance of [Signature](https://github.com/RenzoDD/bitlike/blob/develop/lib/crypto/signature.js)
   - `prevTxId`: this input's `prevTxId`,
   - `outputIndex`: this input's `outputIndex`,
   - `inputIndex`: this input's index in the transaction

@@ -4,7 +4,7 @@
 
 DigiByte is a powerful peer-to-peer platform for the next generation of financial technology. The decentralized nature and the speed of the DigiByte network allows for highly resilient software infrastructure, and the developer community needs reliable, open-source tools to implement DigiByte apps and services.
 
-To get started, just type `npm install digibyte-js`.
+To get started, just type `npm install bitlike`.
 
 ## Documentation Index
 

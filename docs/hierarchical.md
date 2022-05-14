@@ -13,7 +13,7 @@ An instance of a [PrivateKey](privatekey.md) that also contains information requ
 Sample usage:
 
 ```javascript
-var digibyte = require('digibyte-js');
+var digibyte = require('bitlike');
 var HDPrivateKey = digibyte.HDPrivateKey;
 
 var hdPrivateKey = new HDPrivateKey();
