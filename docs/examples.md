@@ -94,7 +94,7 @@ var utxo = {
   "satoshis" : 50000
 };
 
-var transaction = new btilike.Transaction()
+var transaction = new bitlike.Transaction()
     .from(utxo)
     .addData('cryptocurrency rocks') // Add OP_RETURN data
     .sign(privateKey);
@@ -126,11 +126,11 @@ var address = new Address(publicKeys, 2); // 2 of 2
 var utxo = {
   "txid" : "153068cdd81b73ec9d8dcce27f2c77ddda12dee3db424bff5cafdbe9f01c1756",
   "vout" : 0,
-  "script" : new btilike.Script(address).toHex(),
+  "script" : new bitlike.Script(address).toHex(),
   "satoshis" : 20000
 };
 
-var transaction = new btilike.Transaction()
+var transaction = new bitlike.Transaction()
     .from(utxo, publicKeys, 2)
     .to('mhbErZpbSxQQv9imuSmTzxwrK7QAGDcBNk', 20000)
     .sign(privateKeys);
