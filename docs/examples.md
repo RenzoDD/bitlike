@@ -1,29 +1,29 @@
-# DigiByte examples
+# Cryptocurrency examples
 
 ## Generate a random address
 
 ```javascript
-var privateKey = new digibyte.PrivateKey();
+var privateKey = new PrivateKey();
 
-// Legacy address 'D...'
+// Legacy Pay2PublicScriptHash address
 var legacy = privateKey.toAddress();
 var legacy = privateKey.toAddress('legacy');
 
-// Segwit address 'dgb1...'
+// Segwit Pay2SegwitPublicKeyHash address
 var segwit = privateKey.toAddress('segwit');
 
-// Segwit native address 'S...'
-var native = privateKey.toAddress('native');
+// Segwit Pay2ScriptHash address
+var native = privateKey.toAddress('script');
 ```
 
 ## Generate a address from a SHA256 hash
 
 ```javascript
 var value = Buffer.from('correct horse battery staple');
-var hash = digibyte.crypto.Hash.sha256(value);
-var bn = digibyte.crypto.BN.fromBuffer(hash);
+var hash = bitlike.crypto.Hash.sha256(value);
+var bn = bitlike.crypto.BN.fromBuffer(hash);
 
-var address = new digibyte.PrivateKey(bn).toAddress();
+var address = new bitlike.PrivateKey(bn).toAddress();
 ```
 
 ## Generate address from mnemonic
@@ -31,10 +31,10 @@ var address = new digibyte.PrivateKey(bn).toAddress();
 ```javascript
 var mnemonic = 'hockey lumber soda negative link evolve pole retreat sponsor voice hurt feature';
 
-var seed = digibyte.BIP39.MnemonicToSeed(mnemonic);
+var seed = BIP39.MnemonicToSeed(mnemonic);
 
 // Then folow the BIP32 Hierarchical Deterministic Wallet 
-var HD = digibyte.HDPrivateKey.fromSeed(seed);
+var HD = HDPrivateKey.fromSeed(seed);
 var derived = HD.derive("m/44'/20'/0'/0/0");
 
 var address = derived.privateKey.toAddress();
@@ -43,62 +43,60 @@ var address = derived.privateKey.toAddress();
 ## Import an address via WIF
 
 ```javascript
-var wif = 'L1uyy5qTuGrVXrmrsvHWHgVzW9kKdrp27wBC7Vs6nZDTF2BRUVwy';
+var wif = 'cPhfFK19spZ2HgPc4btPchpVjHGMVYWmEph6nxV1cE2R83kQNNVC';
 
-var address = new digibyte.PrivateKey(wif).toAddress();
+var address = new PrivateKey(wif).toAddress();
 ```
 
 ## Create a Transaction
 
 ```javascript
-var privateKey = new digibyte.PrivateKey('L1uyy5qTuGrVXrmrsvHWHgVzW9kKdrp27wBC7Vs6nZDTF2BRUVwy');
+var privateKey = new PrivateKey('cPhfFK19spZ2HgPc4btPchpVjHGMVYWmEph6nxV1cE2R83kQNNVC');
 var utxo = {
-  "txId" : "115e8f72f39fad874cfab0deed11a80f24f967a84079fb56ddf53ea02e308986",
-  "outputIndex" : 0,
-  "address" : "D7SxeTzUMjpwyqrv6iLNvbEiZkK19ANVss",
+  "txid" : "115e8f72f39fad874cfab0deed11a80f24f967a84079fb56ddf53ea02e308986",
+  "vout" : 0,
   "script" : "76a91447862fe165e6121af80d5dde1ecb478ed170565b88ac",
   "satoshis" : 50000
 };
 
-var transaction = new digibyte.Transaction()
+var transaction = new Transaction()
   .from(utxo)
-  .to('D7SxeTzUMjpwyqrv6iLNvbEiZkK19ANVss', 15000)
+  .to('mhbErZpbSxQQv9imuSmTzxwrK7QAGDcBNk', 15000)
   .sign(privateKey);
 ```
 
-## Sign a DigiByte message
+## Sign a message
 
 ```javascript
-var privateKey = new digibyte.PrivateKey('L23PpjkBQqpAF4vbMHNfTZAb3KFPBSawQ7KinFTzz7dxq6TZX8UA');
-var message = new digibyte.Message('This is an example of a signed message.');
+var privateKey = new PrivateKey('cPhfFK19spZ2HgPc4btPchpVjHGMVYWmEph6nxV1cE2R83kQNNVC');
+var message = new Message('This is an example of a signed message.');
 
 var signature = message.sign(privateKey);
 ```
 
-## Verify a DigiByte message
+## Verify a message
 
 ```javascript
-var address = 'D7SxeTzUMjpwyqrv6iLNvbEiZkK19ANVss';
-var signature = 'IO1ssZYzvZOgadCkPKQEIe6ux086r3/llF7Y8gWhxPxTZY7LmrOuSh3NaTttRKfnDovTGvpBnDoeAtJaAi0m5/0=';
+var address = 'mhbErZpbSxQQv9imuSmTzxwrK7QAGDcBNk';
+var signature = 'HymC2vmlu6K3pHuMiD6KyNkLd4OhhfDtbSdZ+WEa2Ro2HD+RNqjSVMxT1fP3MlnAB7X0MMIjNR+6ucyXYHtw5mE=';
 
-var verified = new digibyte.Message('This is an example of a signed message.').verify(address, signature);
+var verified = new Message('This is an example of a signed message.').verify(address, signature);
  ```
 
 ## Create an OP RETURN transaction
 
 ```javascript
-var privateKey = new digibyte.PrivateKey('L1uyy5qTuGrVXrmrsvHWHgVzW9kKdrp27wBC7Vs6nZDTF2BRUVwy');
+var privateKey = new PrivateKey('L1uyy5qTuGrVXrmrsvHWHgVzW9kKdrp27wBC7Vs6nZDTF2BRUVwy');
 var utxo = {
-  "txId" : "115e8f72f39fad874cfab0deed11a80f24f967a84079fb56ddf53ea02e308986",
-  "outputIndex" : 0,
-  "address" : "D7SxeTzUMjpwyqrv6iLNvbEiZkK19ANVss",
+  "txid" : "115e8f72f39fad874cfab0deed11a80f24f967a84079fb56ddf53ea02e308986",
+  "vout" : 0,
   "script" : "76a91447862fe165e6121af80d5dde1ecb478ed170565b88ac",
   "satoshis" : 50000
 };
 
-var transaction = new digibyte.Transaction()
+var transaction = new btilike.Transaction()
     .from(utxo)
-    .addData('digibyte rocks') // Add OP_RETURN data
+    .addData('cryptocurrency rocks') // Add OP_RETURN data
     .sign(privateKey);
 ```
 
@@ -112,40 +110,28 @@ var publicKeys = [
 ];
 var requiredSignatures = 2;
 
-var address = new digibyte.Address(publicKeys, requiredSignatures);
+var address = new Address(publicKeys, requiredSignatures);
 ```
 
 ## Spend from a 2-of-2 multisig P2SH address
 
 ```javascript
 var privateKeys = [
-  new digibyte.PrivateKey('L1wFriaUCJ2WpDEJN7iGMqtC4JmfRJCNnuUFjnW1bPtAraehbYdv'),
-  new digibyte.PrivateKey('KzJhat1sHE7tyj4L71FCNJ4YzdeUgL4wpP9QH46dh6SA5eFZsLCF')
+  new PrivateKey('L1wFriaUCJ2WpDEJN7iGMqtC4JmfRJCNnuUFjnW1bPtAraehbYdv'),
+  new PrivateKey('KzJhat1sHE7tyj4L71FCNJ4YzdeUgL4wpP9QH46dh6SA5eFZsLCF')
 ];
-var publicKeys = privateKeys.map(digibyte.PublicKey);
-var address = new digibyte.Address(publicKeys, 2); // 2 of 2
+var publicKeys = privateKeys.map(PublicKey);
+var address = new Address(publicKeys, 2); // 2 of 2
 
 var utxo = {
-  "txId" : "153068cdd81b73ec9d8dcce27f2c77ddda12dee3db424bff5cafdbe9f01c1756",
-  "outputIndex" : 0,
-  "address" : address.toString(),
-  "script" : new digibyte.Script(address).toHex(),
+  "txid" : "153068cdd81b73ec9d8dcce27f2c77ddda12dee3db424bff5cafdbe9f01c1756",
+  "vout" : 0,
+  "script" : new btilike.Script(address).toHex(),
   "satoshis" : 20000
 };
 
-var transaction = new digibyte.Transaction()
+var transaction = new btilike.Transaction()
     .from(utxo, publicKeys, 2)
-    .to('DBDtLkRegz1FGv9b7tXm5NFJr87p8kfMQb', 20000)
+    .to('mhbErZpbSxQQv9imuSmTzxwrK7QAGDcBNk', 20000)
     .sign(privateKeys);
-```
-
-## Digi-ID Autentication
-
-Following the [DigiID](https://www.digi-id.io/) protocol (from [BitID](https://github.com/bitid/bitid)) you can create a valid credentials to login a website:
-
-```javascript
-var digiid = new digibyte.DigiID('digiid://digiassetX.com/?x=a6326ba1330ffe2');
-var credentials = digiid.sign('xprv...');
-
-// Post credentials to digiid.callback uri 
 ```

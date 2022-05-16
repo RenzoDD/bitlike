@@ -1,4 +1,4 @@
-# BitLike
+# Bitlike
 
 ![Licence](https://img.shields.io/npm/l/bitlike?style=flat)
 [![NPM Package](https://img.shields.io/npm/v/bitlike?style=flat)](https://www.npmjs.com/package/bitlike)
@@ -24,8 +24,8 @@ You can find all the documentation [here](https://github.com/RenzoDD/bitlike/tre
 - [Generate a random mnemonic](docs/examples.md#generate-address-from-mnemonic)
 - [Import an address via WIF](docs/examples.md#import-an-address-via-wif)
 - [Create a Transaction](docs/examples.md#create-a-transaction)
-- [Sign a message](docs/examples.md#sign-a-digibyte-message)
-- [Verify a message](docs/examples.md#verify-a-digibyte-message)
+- [Sign a message](docs/examples.md#sign-a-message)
+- [Verify a message](docs/examples.md#verify-a-message)
 - [Create an OP RETURN transaction](docs/examples.md#create-an-op-return-transaction)
 - [Create a 2-of-3 multisig P2SH address](docs/examples.md#create-a-2-of-3-multisig-p2sh-address)
 - [Spend from a 2-of-2 multisig P2SH address](docs/examples.md#spend-from-a-2-of-2-multisig-p2sh-address)

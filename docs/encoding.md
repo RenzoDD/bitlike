@@ -1,6 +1,6 @@
 # Encoding
 
-The `digibyte.Encoding` namespace contains utilities for encoding information in common formats in the DigiByte ecosystem.
+The `bitlike.Encoding` namespace contains utilities for encoding information in common formats in the cryptocurrency ecosystem.
 
 ## Base58 & Base58Check
 

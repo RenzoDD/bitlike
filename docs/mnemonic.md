@@ -47,6 +47,6 @@ var seed = BIP39.MnemonicToSeed(mnemonic);
 var HD = HDPrivateKey.fromSeed(seed);
 var derived = HD.derive("m/44'/20'/0'/0/0");
 
-var address = derived.privateKey.toAddress();
-// DJPa3v2MZTGy19e3QmnbkxdML1Y4nNy1eQ
+var address = derived.privateKey.toAddress('legacy', 'bitcoin-testnet');
+// mtmRoiAh54owFFw4PkmR37g5JsQUMtprpJ
 ```

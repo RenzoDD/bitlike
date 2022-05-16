@@ -1,10 +1,10 @@
-# DigiByte Address
+# Cryptocurrency Address
 
-Represents a DigiByte address. Addresses are the most popular way to make DigiByte transactions.
+Represents a cryptocurrency address. Addresses are the most popular way to make crypto transactions.
 
 ## Instantiate an Address
 
-To be able to receive DigiBytes an address is needed, but in order to spend them a private key is necessary. Please take a look at the [`PrivateKey`](privatekey.md) docs for more information about exporting and saving a key.  
+To be able to receive crypto an address is needed, but in order to spend them a private key is necessary. Please take a look at the [`PrivateKey`](privatekey.md) docs for more information about exporting and saving a key.  
 
 ```javascript
 var privateKey = new PrivateKey();
@@ -15,18 +15,18 @@ You can also instantiate an Address from a String, [PublicKey](publickey.md), or
 
 ```javascript
 // from a string
-var address = Address.fromString('sr386zj9DLtVbN3jqRvDhngAUrz87EsijL');
+var address = Address.fromString('mhbErZpbSxQQv9imuSmTzxwrK7QAGDcBNk');
 
 // a default network address from a public key
-var publicKey = new PublicKey(privateKey, 'testnet');
-var address = new Address(publicKey, 'testnet');
+var publicKey = new PublicKey(privateKey, 'bitcoin-testnet');
+var address = new Address(publicKey, 'bitcoin-testnet');
 
 // alternative interface
-var address = Address.fromPublicKey(publicKey, 'testnet');
+var address = Address.fromPublicKey(publicKey, 'bitcoin-testnet');
 
 // a testnet address from a public key
 var publicKey = new PublicKey(privateKey);
-var address = new Address(publicKey, Networks.testnet);
+var address = new Address(publicKey, Networks.bitcointest);
 ```
 
 A pay-to-script-hash multisignature Address can be instantiated from an array of [PublicKeys](publickey.md).
@@ -49,17 +49,17 @@ if (Address.isValid(input){
 }
 
 // validate that an input field is a valid testnet address
-if (Address.isValid(input, Networks.testnet){
+if (Address.isValid(input, Networks.bitcointest){
   ...
 }
 
 // validate that an input field is a valid livenet pubkeyhash
-if (Address.isValid(input, Networks.livenet, Address.PayToPublicKeyHash){
+if (Address.isValid(input, Networks.bitcoin, Address.PayToPublicKeyHash){
   ...
 }
 
 // get the specific validation error that can occurred
-var error = Address.getValidationError(input, Networks.testnet);
+var error = Address.getValidationError(input, Networks.bitcointest);
 if (error) {
   // handle the error
 }

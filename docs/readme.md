@@ -1,8 +1,8 @@
-# DigiByteJS
+# Bitlike
 
 ## Principles
 
-DigiByte is a powerful peer-to-peer platform for the next generation of financial technology. The decentralized nature and the speed of the DigiByte network allows for highly resilient software infrastructure, and the developer community needs reliable, open-source tools to implement DigiByte apps and services.
+Bitcoin is a powerful peer-to-peer platform for the next generation of financial technology. The decentralized nature of the network allows for highly resilient software infrastructure, and the developer community needs reliable, open-source tools to implement cryptocurrency apps and services.
 
 To get started, just type `npm install bitlike`.
 
@@ -19,10 +19,9 @@ To get started, just type `npm install bitlike`.
 ### Payment Handling
 
 - [Using Different Units](unit.md)
-- [Acknowledging and Requesting Payments: DigiByte URIs](uri.md)
 - [The Transaction Class](transaction.md)
 
-### DigiByte Internals
+### Coin Internals
 
 - [Scripts](script.md)
 - [Block](block.md)
@@ -37,11 +36,11 @@ To get started, just type `npm install bitlike`.
 ### Create and Save a Private Key
 
 ```javascript
-var privateKey = new digibyte.PrivateKey();
+var privateKey = new PrivateKey();
 
 var exported = privateKey.toWIF();
 // e.g. L3T1s1TYP9oyhHpXgkyLoJFGniEgkv2Jhi138d7R2yJ9F4QdDU2m
-var imported = digibyte.PrivateKey.fromWIF(exported);
+var imported = bitlike.PrivateKey.fromWIF(exported);
 var hexa = privateKey.toString();
 // e.g. 'b9de6e778fe92aa7edb69395556f843f1dce0448350112e14906efc2a80fa61a'
 ```
@@ -56,17 +55,7 @@ var address = privateKey.toAddress();
 
 ```javascript
 // Build a 2-of-3 address from public keys
-var p2shAddress = new digibyte.Address([publicKey1, publicKey2, publicKey3], 2);
-```
-
-### Request a Payment
-
-```javascript
-var paymentInfo = {
-  address: 'DCxo6SCKMdyoUpyYydqG3prC3e4NNCy5nG',
-  amount: 120000 //satoshis
-};
-var uri = new digibyte.URI(paymentInfo).toString();
+var p2shAddress = new bitlike.Address([publicKey1, publicKey2, publicKey3], 2);
 ```
 
 ### Create a Transaction
