@@ -35,6 +35,7 @@ You can find all the documentation [here](https://github.com/RenzoDD/bitlike/tre
 Last modifications to the packages since v1.0.0
 
 - Change package name from bitcore
+- Added suport to Verge (XVG)
 
 ## Development 🛠️
 
